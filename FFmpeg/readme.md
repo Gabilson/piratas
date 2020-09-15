@@ -25,7 +25,8 @@ ffmpeg -i out.mp4 -vcodec libx265 -crf 30 light.mp4
 ```bash
 #Descobrindo o tamanho da sua tela:
 xdpyinfo | grep dimensions
-#1
+
+#Exemplo 1
 ffmpeg -video_size 1366x768 -framerate 25 -f x11grab -i :0.0+0,0 -f alsa -ac 2 -i hw:0 output.mkv
 #		   tela				      L definindo pra gravar a tela inteira (da pra escolher uma area mexendo em "0,0" (x,y))
 
