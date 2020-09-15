@@ -19,6 +19,20 @@ ffmpeg -i meu_video.mp4 -vcodec libx265 -crf 28 leve.mp4
 ffmpeg -i out.mp4 -vcodec libx265 -crf 30 light.mp4
 ```
 
+
+- gravação de tela:
+
+```bash
+#Descobrindo o tamanho da sua tela:
+xdpyinfo | grep dimensions
+#1
+ffmpeg -video_size 1366x768 -framerate 25 -f x11grab -i :0.0+0,0 -f alsa -ac 2 -i hw:0 output.mkv
+#		   tela				      L definindo pra gravar a tela inteira (da pra escolher uma area mexendo em "0,0" (x,y))
+
+#Lossless (muito pesado)
+ffmpeg -video_size 1366x768 -framerate 30 -f x11grab -i :0.0 -c:v libx264rgb -crf 0 -preset ultrafast output.mkv
+``` 
+
 - cortar o ínicio/fim de um video sem recodificar:
 
 ```bash
@@ -34,7 +48,7 @@ ffmpeg -i uncut.mp4        -vf "select='between(t,115,150)+between(t,276,293)+be
 ```
 
 
-- converter mp4 em mkv:
+- converter mp4 (ou outros) em mkv:
 
 ```bash
 ffmpeg -i "input.mp4"	-vcodec copy -acodec copy	"output.mkv"
@@ -46,9 +60,8 @@ ffmpeg -i "input.mp4"	-vcodec copy -acodec copy	"output.mkv"
 ```bash
 ffmpeg -i "path.mkv" -map 0:s:0 name_sub.srt
 				  0:s:1,2,3,...
-```	
-  
-  
+```
+
 - remover audio de um video sem recodificar
 
 ```bash	
@@ -71,9 +84,6 @@ ffmpeg -i $input -c:v copy -an $output
 bash
 # Primeiro, descobrimos a sample rate frequency dentre os metadados(xxx Hz):
 ffmpeg -i "input_file"
-```
-
-```bash
 ffmpeg -i "input_file.m4a" -af asetrate=44100*2,aresample=44100,atempo=0.25 "output.m4a"
 #                                         L rate f em Hz    L rate f em Hz
 ```
