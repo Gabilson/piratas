@@ -32,6 +32,8 @@ ffmpeg -video_size 1366x768 -framerate 25 -f x11grab -i :0.0+0,0 -f alsa -ac 2 -
 
 #Lossless (muito pesado)
 ffmpeg -video_size 1366x768 -framerate 30 -f x11grab -i :0.0 -c:v libx264rgb -crf 0 -preset ultrafast output.mkv
+#Para tentar reduzir podemos recodificar de forma mais eficaz, mas lenta (continuando lossless)
+ffmpeg -i output.mkv -c:v libx264rgb -crf 0 -preset veryslow output-smaller.mkv
 ``` 
 
 - cortar o ínicio/fim de um video sem recodificar:
