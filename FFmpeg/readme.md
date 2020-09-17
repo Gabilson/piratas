@@ -39,7 +39,7 @@ ffmpeg -i output.mkv -c:v libx264rgb -crf 0 -preset veryslow output-smaller.mkv
 - cortar o ínicio/fim de um video sem recodificar:
 
 ```bash
-fmpeg -ss 00:00:40 -i output.mp4 -t 160 -c copy cut_output.mp4
+ffmpeg -ss 00:00:40 -i output.mp4 -t 160 -c copy cut_output.mp4
 ```
 
 
@@ -74,7 +74,7 @@ input=example.mkv
 output=example-nosound.mkv
 #não esquecer o $
 ffmpeg -i $input -c copy -an $output
-```	   
+```
 ou, para remover tudo (legendas, etc.) menos o video:
 ```bash	   
 ffmpeg -i $input -c:v copy -an $output			  
@@ -83,8 +83,7 @@ ffmpeg -i $input -c:v copy -an $output
 
 # Audio
 - alterar a frequencia de um arquivo de audio:
-```
-bash
+```bash
 # Primeiro, descobrimos a sample rate frequency dentre os metadados(xxx Hz):
 ffmpeg -i "input_file"
 ffmpeg -i "input_file.m4a" -af asetrate=44100*2,aresample=44100,atempo=0.25 "output.m4a"
