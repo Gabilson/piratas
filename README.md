@@ -1,4 +1,4 @@
-# Universidade Pirata MKO
+# MKO
 
 Notas pessoais e comandos usuais de alguns programas de terminal relacionados a video:
 
