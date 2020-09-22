@@ -4,9 +4,10 @@
 - concatenar videos sem recodificar:
 
 ```bash
-#Dentro da pasta com os videos originais criamos um .txt com o nome de cada arquivo numa linha 
+#Dentro da pasta com os videos originais criamos um .txt com o nome de cada arquivo numa linha com o formato: file 'video.fmt' 
 ffmpeg -f concat -i "lista_nomes.txt" -c copy "video_junto.mp4"
 ```
+https://trac.ffmpeg.org/wiki/Concatenate
 
 
 - compressões:
