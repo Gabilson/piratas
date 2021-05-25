@@ -59,6 +59,11 @@ ffmpeg -i uncut.mp4        -vf "select='between(t,115,150)+between(t,276,293)+be
 ffmpeg -i "input.mp4"	-vcodec copy -acodec copy	"output.mkv"
 ```
 
+- converter vários arquivos do mesmo tipo de uma só vez:
+
+```bash
+for f in *.mkv; do ffmpeg -i "$f" -vcodec copy -acodec copy "${f%.*}.mp4"
+```
 
 - extrair legendas de um arquivo mkv:
 
